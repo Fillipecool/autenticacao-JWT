@@ -1,0 +1,24 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-rest
+    ports:
+      - "9001:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_HOST: mariadb
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+    networks:
+      - default
+
+networks:
+  app-network:
+    external: true
+    name: docker-sql_default # Nome da rede Docker onde estão o MariaDB e o PHPMyAdmin
+
