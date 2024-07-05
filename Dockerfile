@@ -4,6 +4,7 @@ FROM php:apache
 # Atualize e instale dependências, incluindo extensões necessárias
 RUN apt-get update \
     && apt-get install -y \
+        git \
         libpq-dev \
         libzip-dev \
         unzip \
